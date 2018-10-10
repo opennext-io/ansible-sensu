@@ -15,7 +15,7 @@
     state: directory
     owner: "{{ sensu_user_name }}"
     group: "{{ sensu_group_name }}"
-  when: sensu_master
+  when: sensu_master | bool
   with_items:
     - ssl_generation
     - ssl_generation/sensu_ssl_tool
@@ -31,7 +31,7 @@
     dest: "{{ sensu_config_path }}/ssl_generation/sensu_ssl_tool/sensu_ca/openssl.cnf"
     owner: "{{ sensu_user_name }}"
     group: "{{ sensu_group_name }}"
-  when: sensu_master
+  when: sensu_master | bool
 
 - block:
     - name: Ensure the Sensu CA serial configuration
