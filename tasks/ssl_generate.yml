@@ -110,7 +110,7 @@
         chdir: "{{ sensu_config_path }}/ssl_generation/sensu_ssl_tool/client"
         creates: "{{ sensu_config_path }}/ssl_generation/sensu_ssl_tool/client/keycert.p12"
 
-  when: sensu_master|bool
+  when: sensu_master | bool
   become: true
   become_user: "{{ sensu_user_name }}"
 
@@ -118,7 +118,7 @@
   fetch:
     src: "{{ sensu_config_path }}/ssl_generation/sensu_ssl_tool/{{ item }}"
     dest: "{{ dynamic_data_store }}"
-  when: sensu_master
+  when: sensu_master | bool
   with_items:
     - sensu_ca/cacert.pem
     - server/cert.pem
