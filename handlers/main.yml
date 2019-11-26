@@ -14,6 +14,7 @@
 - name: restart uchiwa service
   service:
     name: "{{ uchiwa_service_name }}"
+    enabled: true
     state: restarted
 
 - name: restart sensu-server service
